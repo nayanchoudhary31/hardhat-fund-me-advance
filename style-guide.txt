@@ -1,0 +1,29 @@
+Order of Layout in Solidity
+
+1. Pragma 
+2. Imports
+3. Error Codes -> ContractName__ErrorCode()
+3. Interfaces
+4. Libraries
+5. Contracts
+
+
+Inside Contracts follows the following pattern
+
+1. Type Declarations
+2. State Variables
+3. Events
+4. Modifiers
+5. Functions -> Ethereum uses NatSpec (Ethereum Natural Language Specification) which is used for documentation 
+
+
+Function Order should be following inside the Contracts
+1. constructor;
+2. receive()
+3. fallback()
+4. external()
+5. public()
+6. internal()
+7. private()
+8. view/pure  
+
