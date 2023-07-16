@@ -1,14 +1,24 @@
 // SPDX-License-Identifier: MIT
+// Pragma
 pragma solidity 0.8.7;
 
 // User should be able to deposit minimum funds in term of USD to the contract
 // Only owner should be able to withdraw funds
 
+//Imports
 import "./PriceConverter.sol";
 import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 
-error NotOwner();
+//Error Codes
+error FundMe__NotOwner();
 
+//Contracts
+
+/**@title A sample Funding Contract
+ * @author Nayan Chaudhary
+ * @notice This contract is for creating a sample funding contract
+ * @dev This implements price feeds as our library
+ */
 contract FundMe {
     using PriceConverter for uint256;
     // Minimum USD to Deposit
@@ -19,7 +29,7 @@ contract FundMe {
 
     modifier onlyOwner() {
         if (msg.sender != owner) {
-            revert NotOwner();
+            revert FundMe__NotOwner();
         }
         _;
     }
