@@ -20,10 +20,6 @@ module.exports = async (hre) => {
     // Get the Mock Aggregator Address
     const ethUSDMockAggregator = await deployments.get("MockV3Aggregator");
     ethUSDPriceFeed = ethUSDMockAggregator.address;
-    console.log(
-      "🚀 ~ file: 01-fund-me-deploy.js:22 ~ module.exports= ~ ethUSDPriceFeed:",
-      ethUSDPriceFeed
-    );
   } else {
     ethUSDPriceFeed = networkConfig[chainId]["ethUSDPriceFeed"];
   }
@@ -41,6 +37,6 @@ module.exports = async (hre) => {
   if (chainId !== 31337) {
     await verify(fundMe.address, [ethUSDPriceFeed]);
   }
-
-  module.exports.tags = ["all", "fundme"];
 };
+
+module.exports.tags = ["all", "fundme"];

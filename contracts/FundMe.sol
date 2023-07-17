@@ -26,6 +26,7 @@ contract FundMe {
     address[] public funders;
     address public immutable owner;
     AggregatorV3Interface public priceFeed;
+    mapping(address => uint256) public addressToFundMap;
 
     modifier onlyOwner() {
         if (msg.sender != owner) {
@@ -39,7 +40,13 @@ contract FundMe {
         priceFeed = AggregatorV3Interface(_priceFeed);
     }
 
-    mapping(address => uint256) public addressToFundMap;
+    receive() external payable {
+        fund();
+    }
+
+    fallback() external payable {
+        fund();
+    }
 
     function fund() public payable {
         require(
