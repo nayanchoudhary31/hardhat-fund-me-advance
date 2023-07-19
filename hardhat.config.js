@@ -20,6 +20,7 @@ module.exports = {
       accounts: [process.env.PRIVATE_KEY],
       chainId: 80001,
       blockConfirmations: 6,
+      gas: 6000000,
     },
     sepolia: {
       url: process.env.SEPOLIA_RPC_URL,

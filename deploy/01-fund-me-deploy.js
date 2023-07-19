@@ -3,6 +3,7 @@ const {
   networkConfig,
   developmentChains,
 } = require("../hardhat-helper-config");
+require("dotenv").config();
 const { verify } = require("../utils/verify");
 
 // Hardhat automatically give hre when we run using hardhat-deploy
@@ -31,10 +32,13 @@ module.exports = async (hre) => {
     // we need to wait if on a live network so we can verify properly
     waitConfirmations: network.config.blockConfirmations || 1,
   });
-
+  log(`FundMe deployed at ${fundMe.address}`);
   log("----------------------------------------------------------------");
 
-  if (chainId !== 31337) {
+  if (
+    !developmentChains.includes(network.name) &&
+    process.env.ETHERSCAN_API_KEY
+  ) {
     await verify(fundMe.address, [ethUSDPriceFeed]);
   }
 };

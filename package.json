@@ -1,4 +1,8 @@
 {
+  "name": "hardhat-fund-me-advance",
+  "author": {
+    "name": "iamnayan31"
+  },
   "devDependencies": {
     "@chainlink/contracts": "^0.6.1",
     "@nomicfoundation/hardhat-ethers": "^3.0.2",
@@ -23,5 +27,10 @@
     "prettier-plugin-solidity": "^1.0.0-beta.13",
     "solhint": "^3.3.6",
     "solidity-coverage": "^0.8.4"
+  },
+  "scripts": {
+    "test": "yarn hardhat test",
+    "test:staging:": "yarn hardhat test --network mumbai",
+    "coverage": "yarn hardhat coverage"
   }
 }
