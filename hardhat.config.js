@@ -31,6 +31,7 @@ module.exports = {
   gasReporter: {
     enabled: process.env.REPORT_GAS !== undefined,
     currency: "USD",
+    token: "ETH",
     coinmarketcap: process.env.COINCAPMARKET_API_KEY,
   },
   etherscan: {
